@@ -1,0 +1,44 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.2.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'groovy'
+}
+
+group = 'com.home.sample'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-rest'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+	developmentOnly group: 'org.springframework.boot', name: 'spring-boot-devtools'
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
+
+	implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.0'
+	implementation group: 'com.h2database', name: 'h2'
+	implementation group: 'javax.xml.bind', name: 'jaxb-api'
+
+	compileOnly group: 'org.projectlombok', name: 'lombok'
+	annotationProcessor group: 'org.projectlombok', name: 'lombok'
+}
+
+test {
+	useJUnitPlatform()
+}
